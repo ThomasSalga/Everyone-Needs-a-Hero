@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd542fe38231744f996fa7d7d89ec4b, type: 3}
+  m_Name: yeah
+  m_EditorClassIdentifier: 
+  ID: 0
+  icon: {fileID: 0}
+  Category: 
+  Title: 
+  Timer: 
+  Text: 
+  Option1: 
+  Option1Success: 
+  Option1Fail: 
+  Option2: 
+  Option2Success: 
+  Option2Fail: 
+  O1SuccessStaminaChange: 0
+  O1SuccessStressChange: 0
+  O1SuccessCashChange: 0
+  O1SuccessGradesChange: 0
+  O1SuccessCrimesChange: 0
+  O1SuccessTimeCost: 0
+  O1FailStaminaChange: 0
+  O1FailStressChange: 0
+  O1FailCashChange: 0
+  O1FailGradesChange: 0
+  O1FailCrimesChange: 0
+  O1FailTimeCost: 0
+  O2SuccessStaminaChange: 0
+  O2SuccessStressChange: 0
+  O2SuccessCashChange: 0
+  O2SuccessGradesChange: 0
+  O2SuccessCrimesChange: 0
+  O2SuccessTimeCost: 0
+  O2FailStaminaChange: 0
+  O2FailStressChange: 0
+  O2FailCashChange: 0
+  O2FailGradesChange: 0
+  O2FailCrimesChange: 0
+  O2FailTimeCost: 0
+  SkipStaminaChange: 0
+  SkipStressChange: 0
+  SkipCashChange: 0
+  SkipGradesChange: 0
+  SkipCrimesChange: 0
+  SkipTimeCost: 0
