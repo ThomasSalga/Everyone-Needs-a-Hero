@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class ActivityUI : MonoBehaviour {
 
@@ -18,9 +19,9 @@ public class ActivityUI : MonoBehaviour {
 
     public Category m_category;
 
-    public Text title;
-    public Text description;
-    public Text timer;
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI description;
+    public TextMeshProUGUI timer;
 
     //These are used to check conditions and influence UI display
     public bool m_mouseIsOver;
@@ -33,27 +34,30 @@ public class ActivityUI : MonoBehaviour {
         m_mouseIsDown = false;
         title.text = m_activity.Title;
         description.text = m_activity.Text;
+        timer.text = "This will take " + m_activity.Timer[0].ToString() + m_activity.Timer[1].ToString() + "Days " +
+                     m_activity.Timer[3].ToString() + m_activity.Timer[4].ToString() + "hours " +
+                     m_activity.Timer[6].ToString() + m_activity.Timer[7].ToString() + "minutes";
         //timer.text = m_activity.Timer;
     }
 
     private void FixedUpdate()
     {
+        if (!m_mouseIsOver && m_mouseIsDown)
+        {
+            gameObject.SetActive(false);
+        }
         if (title.text != m_activity.Title)
         {
             Debug.Log("Swapping");
             title.text = m_activity.Title;
             description.text = m_activity.Text;
+            timer.text = m_activity.Timer;
         }
     }
-
-    //public void DisplayInfo(bool trueORfalse)
-    //{
-    //    //Do we want to display any information?
-    //    transform.GetChild(0).gameObject.SetActive(trueORfalse);
-    //}
-
+    
     private void OnMouseEnter()
     {
+        Debug.Log("in");
         //Highlight the activity icon
         //condition to select 1
         //DisplayInfo(true);
