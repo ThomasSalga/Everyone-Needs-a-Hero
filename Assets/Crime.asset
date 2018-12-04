@@ -13,43 +13,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  Category: Sleep
-  Title: Sleep
-  Timer: 0
-  Text: Time to rest.
-  Option1: You need at least 8 hours to recharge.
-  Option1Success: You sleep like a baby.
-  Option1Fail: You don't sleep all that well, and wake up a bit tired.
-  Option2: You don't have time to get a full night's rest, 5 hours will do.
-  Option2Success: You sleep well, if a little short.
-  Option2Fail: Your night is restless. You wake up unrested.
-  O1SuccessStaminaChange: 100
-  O1SuccessStressChange: 0
+  Category: Crime
+  Title: Fight Supervillains
+  Timer: 0:01:00
+  Text: A bunch of supervillains have grouped up, calling themselves The Ferocious
+    Five, and are terrorizing the city! They need to be stopped!
+  Option1: Fight The Ferocious Five!
+  Option1Success: After a hard-fought battle, you manage to prevail against all odds.
+    The Ferocious Five will not be causing trouble agaom any time soon!
+  Option1Fail: The Ferocious Five prove to be too big of a challenge! Their numbers
+    advantage is a bit too much for you, forcing you to retreat, barely escaping with
+    your life.
+  Option2: 
+  Option2Success: 
+  Option2Fail: 
+  O1SuccessStaminaChange: -75
+  O1SuccessStressChange: 20
   O1SuccessCashChange: 0
   O1SuccessGradesChange: 0
-  O1SuccessCrimesChange: 0
-  O1SuccessTimeCost: 480
-  O1FailStaminaChange: 70
-  O1FailStressChange: 5
+  O1SuccessCrimesChange: -40
+  O1SuccessTimeCost: 30
+  O1FailStaminaChange: -90
+  O1FailStressChange: 35
   O1FailCashChange: 0
   O1FailGradesChange: 0
-  O1FailCrimesChange: 0
-  O1FailTimeCost: 0
-  O2SuccessStaminaChange: 70
-  O2SuccessStressChange: 5
+  O1FailCrimesChange: 35
+  O1FailTimeCost: 30
+  O2SuccessStaminaChange: 0
+  O2SuccessStressChange: 0
   O2SuccessCashChange: 0
   O2SuccessGradesChange: 0
   O2SuccessCrimesChange: 0
-  O2SuccessTimeCost: 300
-  O2FailStaminaChange: 50
-  O2FailStressChange: 10
+  O2SuccessTimeCost: 0
+  O2FailStaminaChange: 0
+  O2FailStressChange: 0
   O2FailCashChange: 0
   O2FailGradesChange: 0
   O2FailCrimesChange: 0
-  O2FailTimeCost: 300
+  O2FailTimeCost: 0
   SkipStaminaChange: 0
   SkipStressChange: 0
   SkipCashChange: 0
   SkipGradesChange: 0
-  SkipCrimesChange: 0
+  SkipCrimesChange: 50
   SkipTimeCost: 0

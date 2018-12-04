@@ -15,14 +15,14 @@ MonoBehaviour:
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   Category: Sleep
   Title: Sleep
-  Timer: 0
+  Timer: 0:00:00
   Text: Time to rest.
-  Option1: You need at least 8 hours to recharge.
+  Option1: Sleep.
   Option1Success: You sleep like a baby.
-  Option1Fail: You don't sleep all that well, and wake up a bit tired.
-  Option2: You don't have time to get a full night's rest, 5 hours will do.
-  Option2Success: You sleep well, if a little short.
-  Option2Fail: Your night is restless. You wake up unrested.
+  Option1Fail: You keep stirring all night, and wake up exhausted.
+  Option2: 
+  Option2Success: 
+  Option2Fail: 
   O1SuccessStaminaChange: 100
   O1SuccessStressChange: 0
   O1SuccessCashChange: 0
@@ -35,18 +35,18 @@ MonoBehaviour:
   O1FailGradesChange: 0
   O1FailCrimesChange: 0
   O1FailTimeCost: 0
-  O2SuccessStaminaChange: 70
-  O2SuccessStressChange: 5
+  O2SuccessStaminaChange: 0
+  O2SuccessStressChange: 0
   O2SuccessCashChange: 0
   O2SuccessGradesChange: 0
   O2SuccessCrimesChange: 0
-  O2SuccessTimeCost: 300
-  O2FailStaminaChange: 50
-  O2FailStressChange: 10
+  O2SuccessTimeCost: 0
+  O2FailStaminaChange: 0
+  O2FailStressChange: 0
   O2FailCashChange: 0
   O2FailGradesChange: 0
   O2FailCrimesChange: 0
-  O2FailTimeCost: 300
+  O2FailTimeCost: 0
   SkipStaminaChange: 0
   SkipStressChange: 0
   SkipCashChange: 0

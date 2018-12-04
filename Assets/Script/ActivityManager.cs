@@ -12,6 +12,12 @@ public class ActivityManager : MonoBehaviour {
     public GenericActivity m_workActivity;
     public GenericActivity m_relaxActivity;
     public GenericActivity m_sleepActivity;
+
+    public Activity m_activityUni;
+    public Activity m_activityCrime;
+    public Activity m_activityWork;
+    public Activity m_activityRelax;
+    public Activity m_activitySleep;
     
     List<GenericActivity> m_activityList = new List<GenericActivity>();
     List<GenericActivity> m_universityList = new List<GenericActivity>();
@@ -46,15 +52,17 @@ public class ActivityManager : MonoBehaviour {
         //spawn 
     }
 
+    //takes the data and stores it in separate lists
     public void Load(TextAsset csv)
     {
         m_activityList.Clear();
-        string[][] dataGrid = CsvParser.Parse(csv.text);
+        string[][] dataGrid = CsvParser.Parse(csv.text); //parse the file and store in a matrix of strings
         for (int i = 0; i < dataGrid.Length; i++)
         {
-            Debug.Log("ID = " + i.ToString());
+           // Debug.Log(dataGrid.Length);
+           // Debug.Log("ID = " + i.ToString());
 
-            if (dataGrid[0][i] != "")
+            if (dataGrid[i][0] != "")
             {
                 GenericActivity activity = ScriptableObject.CreateInstance<GenericActivity>();
                 //Activity activity = new Activity();
@@ -123,6 +131,44 @@ public class ActivityManager : MonoBehaviour {
         isLoaded = true;
     }
 
+    public void UpdateGlobalTimer(int timeToAdd)
+    {
+        inGameTime.GetComponent<InGameTime>().Min += timeToAdd;
+    }
+
+    public void UpdateActivityExpirationTimer(GenericActivity activity, int minutes)
+    {
+        if (m_activityUni.UpdateTimer(minutes))
+        {
+            m_activityUni.ResolveActivity();
+            SwapActivity(m_universityActivity);
+        }
+
+        if (m_activityCrime.UpdateTimer(minutes))
+        {
+            m_activityCrime.ResolveActivity();
+            SwapActivity(m_crimeActivity);
+        }
+
+        if (m_activityWork.UpdateTimer(minutes))
+        {
+            m_activityWork.ResolveActivity();
+            SwapActivity(m_workActivity);
+        }
+
+        if (m_activityRelax.UpdateTimer(minutes))
+        {
+            m_activityRelax.ResolveActivity();
+            SwapActivity(m_relaxActivity);
+        }
+
+        if (m_activitySleep.UpdateTimer(minutes))
+        {
+            m_activitySleep.ResolveActivity();
+            SwapActivity(m_sleepActivity);
+        }
+    }
+
     public void SwapActivity(GenericActivity dataToUpdate)//add category as a parameter to implement search algorithm
     {
         switch(dataToUpdate.Category)
@@ -134,7 +180,8 @@ public class ActivityManager : MonoBehaviour {
                 {
                     WriteInActivityFile(dataToUpdate);
                     Debug.Log("Uni list is empty");
-                }break;
+                }
+                break;
             case "Crime":
                 if (m_heroicList.Count >= 1)
                     WriteInActivityFile(dataToUpdate, m_heroicList, 0);
@@ -142,7 +189,8 @@ public class ActivityManager : MonoBehaviour {
                 {
                     WriteInActivityFile(dataToUpdate);
                     Debug.Log("Crime list is empty");
-                }break;
+                }
+                break;
             case "Work":
                 if (m_workList.Count >= 1)
                     WriteInActivityFile(dataToUpdate, m_workList, 0);
@@ -218,53 +266,60 @@ public class ActivityManager : MonoBehaviour {
         activity.SkipCrimesChange = list[index].SkipCrimesChange;
         activity.SkipTimeCost = list[index].SkipTimeCost;
 
-        //when done remove from list
-        list.Remove(list[index]);
+        if (activity.Category != "Sleep")
+        {
+            //when done remove from list
+            list.Remove(list[index]);
+        }
+
     }
 
     public void WriteInActivityFile(GenericActivity activity)
     {
-        //activity.Category = null;
-        activity.Title = "Nothing to do";
-        activity.Timer = null;
-        activity.Text = null;
-        activity.Option1 = null;
-        activity.Option1Success = null;
-        activity.Option1Fail = null;
-        activity.Option2 = null;
-        activity.Option2Success = null;
-        activity.Option2Fail = null;
+        if (activity.Category != "Sleep")
+        {
+            //activity.Category = null;
+            activity.Title = "Nothing to do";
+            activity.Timer = "0:00:00";
+            activity.Text = null;
+            activity.Option1 = null;
+            activity.Option1Success = null;
+            activity.Option1Fail = null;
+            activity.Option2 = null;
+            activity.Option2Success = null;
+            activity.Option2Fail = null;
 
-        activity.O1SuccessStaminaChange = 0;
-        activity.O1SuccessStressChange = 0;
-        activity.O1SuccessCashChange = 0;
-        activity.O1SuccessGradesChange = 0;
-        activity.O1SuccessCrimesChange = 0;
-        activity.O1SuccessTimeCost = 0;
-        activity.O1FailStaminaChange = 0;
-        activity.O1FailStressChange = 0;
-        activity.O1FailCashChange = 0;
-        activity.O1FailGradesChange = 0;
-        activity.O1FailCrimesChange = 0;
-        activity.O1FailTimeCost = 0;
-        activity.O2SuccessStaminaChange = 0;
-        activity.O2SuccessStressChange = 0;
-        activity.O2SuccessCashChange = 0;
-        activity.O2SuccessGradesChange = 0;
-        activity.O2SuccessCrimesChange = 0;
-        activity.O2SuccessTimeCost = 0;
-        activity.O2FailStaminaChange = 0;
-        activity.O2FailStressChange = 0;
-        activity.O2FailCashChange = 0;
-        activity.O2FailGradesChange = 0;
-        activity.O2FailCrimesChange = 0;
-        activity.O2FailTimeCost = 0;
-        activity.SkipStaminaChange = 0;
-        activity.SkipStressChange = 0;
-        activity.SkipCashChange = 0;
-        activity.SkipGradesChange = 0; 
-        activity.SkipCrimesChange = 0;
-        activity.SkipTimeCost = 0;
+            activity.O1SuccessStaminaChange = 0;
+            activity.O1SuccessStressChange = 0;
+            activity.O1SuccessCashChange = 0;
+            activity.O1SuccessGradesChange = 0;
+            activity.O1SuccessCrimesChange = 0;
+            activity.O1SuccessTimeCost = 0;
+            activity.O1FailStaminaChange = 0;
+            activity.O1FailStressChange = 0;
+            activity.O1FailCashChange = 0;
+            activity.O1FailGradesChange = 0;
+            activity.O1FailCrimesChange = 0;
+            activity.O1FailTimeCost = 0;
+            activity.O2SuccessStaminaChange = 0;
+            activity.O2SuccessStressChange = 0;
+            activity.O2SuccessCashChange = 0;
+            activity.O2SuccessGradesChange = 0;
+            activity.O2SuccessCrimesChange = 0;
+            activity.O2SuccessTimeCost = 0;
+            activity.O2FailStaminaChange = 0;
+            activity.O2FailStressChange = 0;
+            activity.O2FailCashChange = 0;
+            activity.O2FailGradesChange = 0;
+            activity.O2FailCrimesChange = 0;
+            activity.O2FailTimeCost = 0;
+            activity.SkipStaminaChange = 0;
+            activity.SkipStressChange = 0;
+            activity.SkipCashChange = 0;
+            activity.SkipGradesChange = 0;
+            activity.SkipCrimesChange = 0;
+            activity.SkipTimeCost = 0;
+        }
     }
 
     #region Search Functions

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   icon: {fileID: 0}
-  Category: Uni
+  Category: Generic
   Title: Write essay
   Timer: 05:00:00
   Text: You have a 3000 word User Psychology essay to write.

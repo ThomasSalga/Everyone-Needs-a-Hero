@@ -27,7 +27,7 @@ public class StatHandler : MonoBehaviour {
     }
 
     public void SetStress(int stressChange) {
-        if (stress+stressChange>=0)
+        if (stress + stressChange >= 0)
         {
             stress += stressChange;
         }
